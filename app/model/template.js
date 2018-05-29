@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const Template = sequelize.define('Template', {
+    const Activity = sequelize.define('Activity', {
         id:{
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -17,5 +17,5 @@ export default (sequelize, DataTypes) => {
     });
 
 
-    return Template;
+    return Activity;
 };

@@ -1,41 +1,22 @@
 export default (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
+    const Admin = sequelize.define('Admin', {
         id:{
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        nickName:{
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        avatarUrl:{
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        openId:{
+        userName:{
             type: DataTypes.STRING,
             allowNull: false
-
         },
-        city:{
+        password:{
             type: DataTypes.STRING,
-            allowNull: true
-        },
-        province:{
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        country:{
-            type: DataTypes.STRING,
-            allowNull: true,
-            remark:"国家"
-        },
-
+            allowNull: false
+        }
     });
 
-    User.associate = function(models) {
+    Admin.associate = function(models) {
         models.User.belongsToMany(models.UserGroup,{through:"user_usergroup"});
         models.User.belongsToMany(models.Bucket,{as:"UserBucketMany",through:"user_bucket"});
         models.User.belongsToMany(models.Bucket,{as:"hasUploadUser",through:"user_bucket_upload"});
@@ -45,5 +26,5 @@ export default (sequelize, DataTypes) => {
         models.User.hasMany(models.Template);
     };
 
-    return User;
+    return Admin;
 };
