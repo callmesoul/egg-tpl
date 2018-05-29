@@ -36,13 +36,11 @@ export default (sequelize, DataTypes) => {
     });
 
     User.associate = function(models) {
-        models.User.belongsToMany(models.UserGroup,{through:"user_usergroup"});
-        models.User.belongsToMany(models.Bucket,{as:"UserBucketMany",through:"user_bucket"});
-        models.User.belongsToMany(models.Bucket,{as:"hasUploadUser",through:"user_bucket_upload"});
-        models.User.belongsToMany(models.Role,{through:"user_role"});
-        models.User.hasMany(models.Bucket,{as:'bucketAdmin'});
-        models.User.hasMany(models.User,{as:'referee',foreignKey:'refereeId'});
-        models.User.hasMany(models.Template);
+        models.User.hasOne(models.User,{as:"invite"});
+        models.User.hasMany(models.Order);
+        models.User.hasMany(models.Rebate);
+        models.User.hasMany(models.Comment);
+        models.User.hasMany(models.Activity);
     };
 
     return User;

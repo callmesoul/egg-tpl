@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const Referee = sequelize.define('Referee', {
+    const Rebate = sequelize.define('Rebate', {
         id:{
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -25,5 +25,5 @@ export default (sequelize, DataTypes) => {
         paranoid: true,
 
     });
-    return Referee;
+    return Rebate;
 };

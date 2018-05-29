@@ -1,13 +1,13 @@
 export default (sequelize, DataTypes) => {
-    const Activity = sequelize.define('Activity', {
+    const Order = sequelize.define('Order', {
         id:{
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        formId:{
-            type: DataTypes.STRING,
+        price:{
+            type: DataTypes.INTEGER,
             allowNull: false
         }
     },{
@@ -16,6 +16,10 @@ export default (sequelize, DataTypes) => {
 
     });
 
+    Order.associate = function(models) {
+        models.Order.hasOne(models.Rebate);
+    };
 
-    return Activity;
+
+    return Order;
 };
